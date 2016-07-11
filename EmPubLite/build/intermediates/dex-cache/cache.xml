@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/aaron/workspace/bignerdranch-android/EmPubLite/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="08a9f4f30b169615cd463cef988d0ce2febb566d">
+        <dex dex="/home/aaron/workspace/bignerdranch-android/EmPubLite/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_fe809d9f88855e1539927fb0221ecbc592ef310c/classes.dex" />
+    </item>
+    <item
+        jar="/home/aaron/workspace/bignerdranch-android/EmPubLite/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="bfc7fbfe97d16e84598874286afb91fad6cf0f30">
+        <dex dex="/home/aaron/workspace/bignerdranch-android/EmPubLite/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_f6f4336112de09852b2d93b1de45b63aaf249a6e/classes.dex" />
+    </item>
+
+</items>
