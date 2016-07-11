@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/aaron/workspace/bignerdranch-android/EmPubLite/app/src/main/AndroidManifest.xml:2:1-21:12
+ADDED from /home/aaron/workspace/bignerdranch-android/EmPubLite/app/src/main/AndroidManifest.xml:2:1-27:12
 	package
 		ADDED from /home/aaron/workspace/bignerdranch-android/EmPubLite/app/src/main/AndroidManifest.xml:3:5-40
 		INJECTED from /home/aaron/workspace/bignerdranch-android/EmPubLite/app/src/main/AndroidManifest.xml
@@ -39,3 +39,21 @@ category#android.intent.category.LAUNCHER
 ADDED from /home/aaron/workspace/bignerdranch-android/EmPubLite/app/src/main/AndroidManifest.xml:16:17-77
 	android:name
 		ADDED from /home/aaron/workspace/bignerdranch-android/EmPubLite/app/src/main/AndroidManifest.xml:16:27-74
+supports-screens
+ADDED from /home/aaron/workspace/bignerdranch-android/EmPubLite/app/src/main/AndroidManifest.xml:21:5-25:40
+	android:largeScreens
+		ADDED from /home/aaron/workspace/bignerdranch-android/EmPubLite/app/src/main/AndroidManifest.xml:22:9-36
+	android:smallScreens
+		ADDED from /home/aaron/workspace/bignerdranch-android/EmPubLite/app/src/main/AndroidManifest.xml:24:9-37
+	android:normalScreens
+		ADDED from /home/aaron/workspace/bignerdranch-android/EmPubLite/app/src/main/AndroidManifest.xml:23:9-37
+	android:xlargeScreens
+		ADDED from /home/aaron/workspace/bignerdranch-android/EmPubLite/app/src/main/AndroidManifest.xml:25:9-37
+uses-sdk
+INJECTED from /home/aaron/workspace/bignerdranch-android/EmPubLite/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+	android:targetSdkVersion
+		INJECTED from /home/aaron/workspace/bignerdranch-android/EmPubLite/app/src/main/AndroidManifest.xml
+		INJECTED from /home/aaron/workspace/bignerdranch-android/EmPubLite/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/aaron/workspace/bignerdranch-android/EmPubLite/app/src/main/AndroidManifest.xml
+		INJECTED from /home/aaron/workspace/bignerdranch-android/EmPubLite/app/src/main/AndroidManifest.xml
