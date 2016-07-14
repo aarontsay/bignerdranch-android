@@ -2,37 +2,99 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
 
     <TextView
-        android:id="@+id/TODO_recent_decisions"
+        android:id="@+id/app_name"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/TODO_recent_decisions"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+
+        android:text="@string/app_name" />
+
+
 
     <TextView
-        android:id="@+id/home_text"
+        android:id="@+id/recent_decisions_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="home_text" />
+        android:layout_below="@id/app_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
 
-    <Button
-        android:id="@+id/start_text"
+        android:text="@string/recent_decisions_name" />
+
+    <TextView
+        android:id="@+id/recent_decisions_default"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/start_text"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
+        android:layout_below="@id/recent_decisions_name"
+        android:layout_centerHorizontal="true"
+
+        android:text="@string/recent_decisions_default"
         />
 
-    <Button
-        android:layout_toRightOf="@id/start_text"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_to_account"
-        android:layout_alignParentBottom="true" />
+        android:layout_below="@id/recent_decisions_default"
+        android:layout_centerHorizontal="true"
+
+        android:text="@string/recent_decisions_choice"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/recent_decisions_name"/>
 
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp">
+
+        <TextView
+            android:id="@+id/home_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_text_1" />
+
+
+
+        <TextView
+            android:id="@+id/home_text_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_text_2" />
+
+        <Button
+            android:id="@+id/start_text"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+
+            android:text="@string/start_text"/>
+
+        <Button
+            android:id="@+id/login_to_account"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+
+            android:text="@string/login_to_account" />
+
+    </LinearLayout>
 
 </RelativeLayout>
 
