@@ -15,14 +15,24 @@ import org.w3c.dom.Text;
 
 public class ChoiceHandler extends AppCompatActivity {
 
-    private TextView choiceNumberTextView;
     private int choiceNumber;
     private Choice[] choiceArr;
     private int numOfChoices;
 
     private Button choiceNameNextButton;
-    private String choiceNameNextTextButtonView = "Next Choice";
-    private String choiceNameDoneTextButtonView = "Done";
+
+
+    public void updateChoiceButton() {
+        String choiceNameNextTextButtonView = "Next Choice";
+        String choiceNameDoneTextButtonView = "Done";
+
+        if(choiceNumber == numOfChoices && choiceArr[numOfChoices - 1] != null) {
+            choiceNameNextButton.setText(choiceNameDoneTextButtonView);
+        } else {
+            choiceNameNextButton.setText(choiceNameNextTextButtonView);
+        }
+        choiceNumber++;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +44,8 @@ public class ChoiceHandler extends AppCompatActivity {
 
         // shows on activity_choice_handler.xml as 'Choice ChoiceNumber'
         choiceNumber = 1;
+
+        TextView choiceNumberTextView;
         choiceNumberTextView = (TextView) findViewById(R.id.choice_n_view);
 
         // this app will not deal with locale-specific digits nor fractions
@@ -46,19 +58,24 @@ public class ChoiceHandler extends AppCompatActivity {
         choiceArr[choiceNumber - 1] = new Choice(choiceName);
 
         choiceNameNextButton = (Button) findViewById(R.id.choice_name_next);
-
-
-
+        updateChoiceButton();
     }
 
-    public void updateChoiceButton() {
-        if(choiceNumber == numOfChoices && choiceArr[numOfChoices - 1] != null) {
-
-        }
-        choiceNumber++;
-
-    }
+    // if choiceNumber == numOfChoices, then call next activity.
+    // Otherwise add current Choice to choiceArr and ask for another Choice
     public void addChoiceOrMoveOnToValues() {
+        if (choiceNumber == numOfChoices && choiceArr[choiceNumber - 1] != null) {
+            // TODO
+            // add choiceArr to Intent
+            // add decisionName to Intent
+            // startActivity(intent, ValuesHandler)
+        } else {
+            // TODO
+            // add choice to choiceArr
+            // increment choiceNumber
+            // reset EditText
+        }
+
 
     }
 }
