@@ -83,7 +83,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
 
-            android:text="@string/start_text"/>
+            android:text="@string/start_text"
+
+            android:onClick="startDecision"/>
 
         <Button
             android:id="@+id/login_to_account"
@@ -92,7 +94,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
 
-            android:text="@string/login_to_account" />
+            android:text="@string/login_to_account"
+
+            android:onClick="loginToAccount"/>
 
     </LinearLayout>
 

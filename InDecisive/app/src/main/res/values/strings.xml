@@ -18,4 +18,17 @@
     <string name="password_login">Password</string>
     <string name="keep_login">Keep me logged in</string>
 
+
+    <string name="start_decision_how">How many options are in this decision?</string>
+    <string name="start_decision_how_field_text">Enter a number between 2 and 10</string>
+    <string name="start_decision_what">What are your choices in this decision?</string>
+
+    <string name="start_decision_go">Go!</string>
+    <string name="title_activity_choice_handler">ChoiceHandler</string>
+
+    <string name="choice_n_name">Choice</string>
+    <string name="choice_name_enter">Enter a title.</string>
+
+
+
 </resources>

@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "730716370210",
-    "firebase_url": "https://indecisive-d14c8.firebaseio.com",
-    "project_id": "indecisive-d14c8",
-    "storage_bucket": "indecisive-d14c8.appspot.com"
+    "project_number": "422512234788",
+    "firebase_url": "https://indecisive-af262.firebaseio.com",
+    "project_id": "indecisive-af262",
+    "storage_bucket": "indecisive-af262.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:730716370210:android:17370063ae751646",
+        "mobilesdk_app_id": "1:422512234788:android:7adc60c6efb984b6",
         "android_client_info": {
-          "package_name": "com.android.aarontsay.indecisive"
+          "package_name": "com.aarontsay.android.indecisive"
         }
       },
       "oauth_client": [
         {
-          "client_id": "730716370210-h6augnpfgbflpqfs72ccjm4u2h2o2slq.apps.googleusercontent.com",
+          "client_id": "422512234788-4t29pk63romutbm3sira945etc48n4n2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA7KwCf8eeEH7ylOcqGftIpMMUD64j9nN4"
+          "current_key": "AIzaSyD8oaMhDRGk-tKnJiM1dov1wVnRGnzz2pM"
         }
       ],
       "services": {
