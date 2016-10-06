@@ -53,7 +53,7 @@ public class Play_Activity extends AppCompatActivity {
         pause = (Button) findViewById(R.id.button2);
         stop = (Button) findViewById(R.id.button3);
 
-        isStopped = true;
+        isStopped = false;
 
         final MediaPlayer sound = MediaPlayer.create(Play_Activity.this, R.raw.smg);
 
@@ -75,6 +75,7 @@ public class Play_Activity extends AppCompatActivity {
                 }
                 if (isPaused) {
                     sound.start();
+                    timer.start();
                     isPaused = false;
                 }
 
@@ -90,6 +91,7 @@ public class Play_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 if (sound.isPlaying()) {
                     sound.pause();
+                    timer.cancel();
                     isPaused = true;
                     // TODO timer wait
                 }
@@ -100,9 +102,9 @@ public class Play_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (sound.isPlaying()) {
+                    timer.cancel();
                     sound.stop();
                     isStopped = true;
-                    // TODO stop timer OR reset to original time
                 }
             }
         });
