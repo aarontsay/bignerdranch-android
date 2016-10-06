@@ -21,6 +21,7 @@ public class Play_Activity extends AppCompatActivity {
     Button play, pause, stop;
 
     boolean isStopped;
+    boolean isPaused;
 
     int mDurationSeconds;
     String mTimerText;
@@ -52,7 +53,7 @@ public class Play_Activity extends AppCompatActivity {
         pause = (Button) findViewById(R.id.button2);
         stop = (Button) findViewById(R.id.button3);
 
-        isStopped = false;
+        isStopped = true;
 
         final MediaPlayer sound = MediaPlayer.create(Play_Activity.this, R.raw.smg);
 
@@ -72,8 +73,14 @@ public class Play_Activity extends AppCompatActivity {
                     }
                     isStopped = false;
                 }
+                if (isPaused) {
+                    sound.start();
+                    isPaused = false;
+                }
+
                 sound.start();
                 timer.start();
+
                 // TODO if paused, resume timer
             }
         });
@@ -83,6 +90,7 @@ public class Play_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 if (sound.isPlaying()) {
                     sound.pause();
+                    isPaused = true;
                     // TODO timer wait
                 }
             }
