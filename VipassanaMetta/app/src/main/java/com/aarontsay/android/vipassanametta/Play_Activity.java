@@ -20,11 +20,6 @@ import java.util.concurrent.TimeUnit;
 public class Play_Activity extends AppCompatActivity {
     Button play, pause, stop;
 
-    Button play1,pause1, stop1;
-
-    ToggleButton playpause;
-    Button stop2;
-
     boolean isStopped;
 
     int mDurationSeconds;
@@ -56,19 +51,6 @@ public class Play_Activity extends AppCompatActivity {
         play = (Button) findViewById(R.id.button);
         pause = (Button) findViewById(R.id.button2);
         stop = (Button) findViewById(R.id.button3);
-        // separate button for play pause and stop
-
-        play1 = (Button) findViewById(R.id.button4);
-        pause1 = (Button) findViewById(R.id.button5);
-        pause1.setVisibility(View.INVISIBLE);
-        stop1 = (Button) findViewById(R.id.button6);
-        stop1.setVisibility(View.INVISIBLE);
-        // press play button to play and to show pause and stop button and stop
-        // will hide pause and stop button again
-
-        playpause = (ToggleButton) findViewById(R.id.playPause);
-        stop2 = (Button) findViewById(R.id.button9);
-        // single button for play/pause
 
         isStopped = false;
 
@@ -116,81 +98,6 @@ public class Play_Activity extends AppCompatActivity {
                 }
             }
         });
-
-        play1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                stop1.setVisibility(View.VISIBLE);
-                pause1.setVisibility(View.VISIBLE);
-
-                if (isStopped) {
-                    try {
-                        sound.prepare();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    isStopped = false;
-                }
-
-
-                sound.start();
-            }
-        });
-
-        pause1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (sound.isPlaying()) {
-                    sound.pause();
-                }
-            }
-        });
-
-        stop1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pause1.setVisibility(View.INVISIBLE);
-                stop1.setVisibility(View.INVISIBLE);
-                if (sound.isPlaying()) {
-                    sound.stop();
-                    isStopped = true;
-                }
-
-            }
-        });
-
-        playpause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isStopped) {
-                    try {
-                        sound.prepare();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    isStopped = false;
-                }
-
-                if (playpause.isChecked()) {
-                    sound.start();
-                } else {
-                    sound.pause();
-                }
-            }
-        });
-
-        stop2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (sound.isPlaying()) {
-                    sound.stop();
-                    isStopped = true;
-                }
-            }
-        });
-
-
     }
 
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
