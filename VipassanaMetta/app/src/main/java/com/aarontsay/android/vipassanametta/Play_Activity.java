@@ -25,6 +25,8 @@ public class Play_Activity extends AppCompatActivity {
 
     int mDurationSeconds;
     String mTimerText;
+    long oldMillis;
+    long oldCount;
 
     private TextView mTextField;
 
@@ -81,7 +83,6 @@ public class Play_Activity extends AppCompatActivity {
 
                 sound.start();
                 timer.start();
-
                 // TODO if paused, resume timer
             }
         });
@@ -91,6 +92,8 @@ public class Play_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 if (sound.isPlaying()) {
                     sound.pause();
+                    oldMillis = timer.getMillisAtPause();
+                    oldCount = timer.getCountDownInterval();
                     timer.cancel();
                     isPaused = true;
                     // TODO timer wait
@@ -114,9 +117,13 @@ public class Play_Activity extends AppCompatActivity {
     @SuppressLint ("NewApi")
     public class CounterClass extends CountDownTimer {
 
+        long countDownInterval;
+        long millisAtPause;
+
         public CounterClass(long millisInFuture, long countDownInterval) {
             super(millisInFuture, countDownInterval);
 
+            this.countDownInterval = countDownInterval;
         }
 
         @TargetApi(Build.VERSION_CODES.GINGERBREAD)
@@ -124,11 +131,24 @@ public class Play_Activity extends AppCompatActivity {
         @Override
         public void onTick(long millisUntilFinished) {
             long millis = millisUntilFinished;
+            this.millisAtPause = millis;
             String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis),
                     TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
                     TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
             System.out.println(hms);
             mTextField.setText(hms);
+        }
+
+        public long getMillisAtPause() {
+            return this.millisAtPause;
+        }
+
+        public long getCountDownInterval() {
+            return this.countDownInterval;
+        }
+
+        public void recreateTimer() {
+            
         }
 
         @Override
