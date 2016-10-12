@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_timer_and_music"
@@ -10,43 +10,66 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:gravity="center"
+    android:gravity="top"
     android:orientation="vertical"
     tools:context="com.aarontsay.android.medapp.TimerAndMusic">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/IUBDC"
-        android:src="@drawable/IUBDC"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:id="@+id/bdc"
+        android:src="@drawable/bdc"
         android:adjustViewBounds="true"
         android:maxHeight="200dp"
-        android:maxWidth="200dp"/>
-    
-    <TextView
-        android:id="@+id/timer_text_view"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:maxWidth="200dp"
+        android:contentDescription="@string/temp"/>
+
+    <EditText
+        android:id="@+id/user_timer_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="24dp"/>
+        android:maxLines="1"
+        android:clickable="true"
+        android:inputType="phone"
+        android:layout_below="@id/bdc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:textSize="50sp"
+        android:padding="10dp"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Play"
-            android:id="@+id/play_button"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/user_timer_input"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="@string/Pause"
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Pause"
-            android:id="@+id/pause_button"/>
+        android:id="@+id/pause_button"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Stop"
-            android:id="@+id/stop_button"/>
-    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/pause_button"
+        android:layout_toStartOf="@id/pause_button"
+        android:layout_alignTop="@id/pause_button"
+        android:text="@string/Play"
+        android:id="@+id/play_button" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/pause_button"
+        android:layout_toEndOf="@id/pause_button"
+        android:layout_alignTop="@id/pause_button"
+        android:text="@string/Stop"
+        android:id="@+id/stop_button"/>
+</RelativeLayout>
 

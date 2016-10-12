@@ -3,4 +3,6 @@
     <string name="Play">Play</string>
     <string name="Pause">Pause</string>
     <string name="Stop">Stop</string>
+    <string name="temp">temp</string>
 </resources>
+

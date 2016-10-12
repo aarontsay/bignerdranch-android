@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class TimerAndMusic extends AppCompatActivity {
   private Button mPlay, mPause, mStop;
   private String mTimerText;
-  private TextView mTimerTextView;
+  private EditText userTimerTextInput;
 
   // TODO Consider if isStopped and isPlaying can be consolidated into one variable
   // if isPlaying then !isStopped
@@ -32,8 +33,9 @@ public class TimerAndMusic extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_timer_and_music);
 
-    // Image wheel = Image.(TimerAndMusic.this, R.raw.IUBDC);
-    ImageView wheel = (ImageView) findViewById(R.id.IUBDC);
+    // TODO placeholder image, consider getting rid of in class since we do not manipulate it
+    //ImageView wheel = (ImageView) findViewById(R.id.bdc);
+
     mPlay = (Button) findViewById(R.id.play_button);
     mPause = (Button) findViewById(R.id.pause_button);
     mStop = (Button) findViewById(R.id.stop_button);
@@ -50,8 +52,9 @@ public class TimerAndMusic extends AppCompatActivity {
     final long endMeditationChantDuration = endMeditationChant.getDuration();
 
     // eventually set this to user input in configuration/settings page
-    mTimerTextView = (TextView) findViewById(R.id.timer_text_view);
-    mTimerTextView.setText("01:00:00");
+    // userTimerTextInput = new EditText() TODO
+    userTimerTextInput = (EditText) findViewById(R.id.user_timer_input);
+    userTimerTextInput.setText("01:00:00");
 
     // TEST UNITS FOR TIMER AND MEDIA PLAYING
     int tenSeconds = 10000;
@@ -72,10 +75,10 @@ public class TimerAndMusic extends AppCompatActivity {
         String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
           TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
           TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)));
-        mTimerTextView.setText(hms);
+        userTimerTextInput.setText(hms);
       }
       public void onFinish() {
-        mTimerTextView.setText("Sadhu, Sadhu, Sadhu");
+        userTimerTextInput.setText("Sadhu, Sadhu, Sadhu");
       }
     };
 
@@ -101,6 +104,7 @@ public class TimerAndMusic extends AppCompatActivity {
           timer.start();
           isStarted = true;
           isPlaying = true;
+          userTimerTextInput.setEnabled(false);
         }
 
         // paused and play is pressed
@@ -175,6 +179,7 @@ public class TimerAndMusic extends AppCompatActivity {
         if(isPlaying || isPaused) {
           startMeditationChant.stop();
           timer.cancel();
+          userTimerTextInput.setEnabled(true);
           isStopped = true;
           isPlaying = false;
           isPaused = false;
