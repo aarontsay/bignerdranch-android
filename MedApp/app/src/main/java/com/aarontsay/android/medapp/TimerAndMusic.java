@@ -1,11 +1,13 @@
 package com.aarontsay.android.medapp;
 
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -17,17 +19,21 @@ public class TimerAndMusic extends AppCompatActivity {
   private String mTimerText;
   private TextView mTimerTextView;
 
+  // TODO Consider if isStopped and isPlaying can be consolidated into one variable
+  // if isPlaying then !isStopped
+  // if !isPlaying then isStopped
   private boolean isPaused;
   private boolean isStopped;
   private boolean isPlaying;
   private boolean isStarted;
-
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_timer_and_music);
 
+    // Image wheel = Image.(TimerAndMusic.this, R.raw.IUBDC);
+    ImageView wheel = (ImageView) findViewById(R.id.IUBDC);
     mPlay = (Button) findViewById(R.id.play_button);
     mPause = (Button) findViewById(R.id.pause_button);
     mStop = (Button) findViewById(R.id.stop_button);
@@ -55,11 +61,13 @@ public class TimerAndMusic extends AppCompatActivity {
 
     final CountDownTimer timer = new CountDownTimer(fiveMinutes - oneMinute, 1000) {
       public void onTick(long millisUntilFinished) {
-        if(millisUntilFinished == endMeditationChantDuration) {
+        /*if(millisUntilFinished == endMeditationChantDuration) {
           startMeditationChant.stop();
           endMeditationChant.start();
           // TODO endMeditationChant to start playing upon respective duration
         }
+        */
+
         // gives warning for locale, but String is strictly numerical
         String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
           TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
