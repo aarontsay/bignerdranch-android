@@ -53,11 +53,27 @@ public class TimerAndMusic extends AppCompatActivity {
         mPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // isPaused, !isPlaying, isStopped, so a fresh state
-                if(!isPaused && !isStopped && !isPlaying) {
-                    startMeditationChant.start();
-                    isStarted = true;
+              // stopped and play is pressed
+              if(isStopped) {
+                try {
+                  startMeditationChant.prepare();
+                  // timer.start();
+                  // TODO timer
+                } catch (IOException e) {
+                  e.printStackTrace();
                 }
+                isStopped = false;
+                isPlaying = true;
+                isStarted = false;
+              }
+
+              // if !isStarted
+              if(!isStarted) {
+                startMeditationChant.start();
+                isStarted = true;
+                isPlaying = true;
+                // TODO add timer\
+              }
 
                 // paused and play is pressed
                 if(isPaused) {
@@ -65,16 +81,16 @@ public class TimerAndMusic extends AppCompatActivity {
                     timer.resume();
                     }
                 isPaused = false;
+                isPlaying = true;
 
-                // stopped and play is pressed
-                if(isStopped) {
-                    try {
-                        startMeditationChant.prepare();
-                        timer.start();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                isStopped = false;
+                // not playing and play is pressed
+                if(!isPlaying && isStarted) {
+                    startMeditationChant.start();
+                    isPlaying = true;
+                    isStopped = false;
+                    isPaused = false;
+
+                    // TODO add timer
                 }
 
                 // not paused and play is pressed
@@ -89,11 +105,60 @@ public class TimerAndMusic extends AppCompatActivity {
                     // DO NOTHING
                 }
                 */
-                // not playing and play is pressed
-                if(!isPlaying && isStarted) {
-                    startMeditationChant.start();
-                }
                 // playing and play is pressed
+                /*
+                if(isPlaying) {
+                    // DO NOTHING
+                }
+                */
+            }
+        });
+
+        mPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // if isPlaying, then pause
+                if(isPlaying) {
+                    startMeditationChant.pause();
+                    isPlaying = false;
+                    isPaused = true;
+                    // TODO add timer
+                }
+                // if isPaused
+                /*
+                if(isPaused) {
+                  // DO NOTHING
+                }
+                */
+                // if isStopped
+                /*if(isStopped) {
+                    // DO NOTHING
+                }
+                */
+            }
+        });
+
+        mStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              // if isPlaying, then Stop pressed OR if isPaused, then Stop pressed
+              if(isPlaying || isPaused) {
+                startMeditationChant.stop();
+                isStopped = true;
+                isPlaying = false;
+                isPaused = false;
+                isStarted = false;
+                // timer.cancel();
+                // TODO add timer
+
+              }
+
+              // if isStopped, then Stop pressed
+              /*
+              if(isStopped) {
+                // DO NOTHING
+              }
+              */
             }
         });
 
