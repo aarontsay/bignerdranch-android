@@ -1,6 +1,7 @@
 package com.aarontsay.android.medapp;
 
 import android.media.MediaPlayer;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.Timer;
 import java.util.concurrent.TimeUnit;
 
 public class TimerAndMusic extends AppCompatActivity {
@@ -36,19 +38,28 @@ public class TimerAndMusic extends AppCompatActivity {
     isStarted = false;
 
     final MediaPlayer startMeditationChant = MediaPlayer.create(TimerAndMusic.this, R.raw.smg);
+    final MediaPlayer endMeditationChant = MediaPlayer.create(TimerAndMusic.this, R.raw.sjoi);
+
+    long startMeditationChantDuration = startMeditationChant.getDuration();
+    final long endMeditationChantDuration = endMeditationChant.getDuration();
 
     // eventually set this to user input in configuration/settings page
     mTimerTextView = (TextView) findViewById(R.id.timer_text_view);
     mTimerTextView.setText("01:00:00");
 
-    // TEST UNITS
+    // TEST UNITS FOR TIMER AND MEDIA PLAYING
     int tenSeconds = 10000;
     int thirtySeconds = 30000;
     int oneMinute = 60000;
     int fiveMinutes = oneMinute * 5;
 
-    final CountDownTimer timer = new CountDownTimer(3600000 * 2, 1000) {
+    final CountDownTimer timer = new CountDownTimer(fiveMinutes - oneMinute, 1000) {
       public void onTick(long millisUntilFinished) {
+        if(millisUntilFinished == endMeditationChantDuration) {
+          startMeditationChant.stop();
+          endMeditationChant.start();
+          // TODO endMeditationChant to start playing upon respective duration
+        }
         // gives warning for locale, but String is strictly numerical
         String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
           TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
