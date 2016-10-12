@@ -1,23 +1,18 @@
 package com.aarontsay.android.medapp;
 
-import android.media.Image;
 import android.media.MediaPlayer;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import java.io.IOException;
-import java.util.Timer;
 import java.util.concurrent.TimeUnit;
 
 public class TimerAndMusic extends AppCompatActivity {
   private Button mPlay, mPause, mStop;
-  private String mTimerText;
+
+  // TODO center default text
   private EditText userTimerTextInput;
 
   // TODO Consider if isStopped and isPlaying can be consolidated into one variable
@@ -49,20 +44,21 @@ public class TimerAndMusic extends AppCompatActivity {
     final MediaPlayer endMeditationChant = MediaPlayer.create(TimerAndMusic.this, R.raw.sjoi);
 
     long startMeditationChantDuration = startMeditationChant.getDuration();
-    final long endMeditationChantDuration = endMeditationChant.getDuration();
+    long endMeditationChantDuration = endMeditationChant.getDuration();
 
     // eventually set this to user input in configuration/settings page
-    // userTimerTextInput = new EditText() TODO
     userTimerTextInput = (EditText) findViewById(R.id.user_timer_input);
-    userTimerTextInput.setText("01:00:00");
+//    userTimerTextInput.setText("01:00:00");
+    // TODO input like scanf("%2d:%2d:%2d", &hh, &mm, &ss)
 
     // TEST UNITS FOR TIMER AND MEDIA PLAYING
     int tenSeconds = 10000;
     int thirtySeconds = 30000;
     int oneMinute = 60000;
     int fiveMinutes = oneMinute * 5;
+    long defaultMeditationDuration = oneMinute * 60;
 
-    final CountDownTimer timer = new CountDownTimer(fiveMinutes - oneMinute, 1000) {
+    final CountDownTimer timer = new CountDownTimer(defaultMeditationDuration, 1000) {
       public void onTick(long millisUntilFinished) {
         /*if(millisUntilFinished == endMeditationChantDuration) {
           startMeditationChant.stop();
@@ -78,7 +74,7 @@ public class TimerAndMusic extends AppCompatActivity {
         userTimerTextInput.setText(hms);
       }
       public void onFinish() {
-        userTimerTextInput.setText("Sadhu, Sadhu, Sadhu");
+        // userTimerTextInput.setText("Sadhu, Sadhu, Sadhu");
       }
     };
 

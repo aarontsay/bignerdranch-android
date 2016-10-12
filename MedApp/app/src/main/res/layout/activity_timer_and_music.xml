@@ -31,16 +31,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxLines="1"
+        android:textAlignment="center"
+        android:hint="@string/time_hint"
         android:clickable="true"
-        android:inputType="phone"
+        android:inputType="time"
         android:layout_below="@id/bdc"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
         android:textSize="50sp"
+        android:ems="10"
         android:padding="10dp"/>
+
 
     <Button
         android:layout_width="wrap_content"
