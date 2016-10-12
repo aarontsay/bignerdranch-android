@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class TimerAndMusic extends AppCompatActivity {
     private Button mPlay, mPause, mStop;
@@ -39,10 +40,13 @@ public class TimerAndMusic extends AppCompatActivity {
         mTimerTextView = (TextView) findViewById(R.id.timer_text_view);
         mTimerTextView.setText("01:00:00");
 
-        final CountDownTimer timer = new CountDownTimer(30000, 1000) {
+        final CountDownTimer timer = new CountDownTimer(3600000 * 2, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                //mTimerTextView.setText(millisUntilFinished / 1000);
+              String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
+                TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
+                TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)));
+              mTimerTextView.setText(hms);
             }
 
             public void onFinish() {
@@ -161,29 +165,5 @@ public class TimerAndMusic extends AppCompatActivity {
               */
             }
         });
-
- /*
- * Example of showing a 30 second countdown in a text field:
- *
- * <pre class="prettyprint">
- * new CountdownTimer(30000, 1000) {
- *
- *     public void onTick(long millisUntilFinished) {
- *         mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
- *     }
- *
- *     public void onFinish() {
- *         mTextField.setText("done!");
- *     }
- *  }.start();
- * </pre>
- *
- * The calls to {@link #onTick(long)} are synchronized to this object so that
- * one call to {@link #onTick(long)} won't ever occur before the previous
- * callback is complete.  This is only relevant when the implementation of
- * {@link #onTick(long)} takes an amount of time to execute that is significant
- * compared to the countdown interval.
- */
-
     }
 }
