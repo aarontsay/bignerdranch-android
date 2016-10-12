@@ -40,21 +40,26 @@ public class TimerAndMusic extends AppCompatActivity {
         mTimerTextView = (TextView) findViewById(R.id.timer_text_view);
         mTimerTextView.setText("01:00:00");
 
-        final CountDownTimer timer = new CountDownTimer(3600000 * 2, 1000) {
+      // TEST UNITS
+      int tenSeconds = 10000;
+      int thirtySeconds = 30000;
+      int oneMinute = 60000;
+      int fiveMinutes = oneMinute * 5;
 
-            public void onTick(long millisUntilFinished) {
-              String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
-                TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
-                TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)));
-              mTimerTextView.setText(hms);
-            }
-
-            public void onFinish() {
+      final CountDownTimer timer = new CountDownTimer(3600000 * 2, 1000) {
+        public void onTick(long millisUntilFinished) {
+          // gives warning for locale, but String is strictly numerical
+          String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
+            TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
+            TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)));
+          mTimerTextView.setText(hms);
+        }
+        public void onFinish() {
                 mTimerTextView.setText("Sadhu");
             }
-        }.start();
+      }.start();
 
-        mPlay.setOnClickListener(new View.OnClickListener() {
+      mPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
               // stopped and play is pressed
