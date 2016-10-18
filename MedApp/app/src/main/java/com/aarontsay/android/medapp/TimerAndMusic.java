@@ -11,13 +11,9 @@ import java.util.concurrent.TimeUnit;
 
 public class TimerAndMusic extends AppCompatActivity {
   private Button mPlay, mPause, mStop;
-
-  // TODO center default text
+  
   private EditText userTimerTextInput;
 
-  // TODO Consider if isStopped and isPlaying can be consolidated into one variable
-  // if isPlaying then !isStopped
-  // if !isPlaying then isStopped
   private boolean isPaused;
   private boolean isStopped;
   private boolean isPlaying;
@@ -175,14 +171,13 @@ public class TimerAndMusic extends AppCompatActivity {
         if(isPlaying || isPaused) {
           startMeditationChant.stop();
           timer.cancel();
+          userTimerTextInput.selectAll();
           userTimerTextInput.setEnabled(true);
+
           isStopped = true;
           isPlaying = false;
           isPaused = false;
           isStarted = false;
-          // timer.cancel();
-          // TODO add timer
-
         }
 
         // if isStopped, then Stop pressed
