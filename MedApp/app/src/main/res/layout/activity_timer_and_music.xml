@@ -10,6 +10,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@android:color/black"
     android:gravity="top"
     android:orientation="vertical"
     tools:context="com.aarontsay.android.medapp.TimerAndMusic">
@@ -19,13 +20,13 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
-        android:id="@+id/bdc"
-        android:src="@drawable/bdc"
+        android:id="@+id/cyan1"
+        android:src="@drawable/cyan1"
         android:adjustViewBounds="true"
         android:maxHeight="200dp"
         android:maxWidth="200dp"
         android:contentDescription="@string/temp"/>
-
+<!--
     <EditText
         android:id="@+id/user_timer_input"
         android:layout_width="wrap_content"
@@ -37,7 +38,7 @@
         android:hint="@string/time_hint"
         android:clickable="true"
         android:inputType="time"
-        android:layout_below="@id/bdc"
+        android:layout_below="@id/cyan1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
@@ -45,8 +46,71 @@
         android:textSize="50sp"
         android:ems="10"
         android:padding="10dp"/>
+-->
 
+    <EditText
+        android:id="@+id/user_timer_hour_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:maxLength="2"
+        android:selectAllOnFocus="true"
+        android:textAlignment="center"
+        android:hint="@string/zerozero"
+        android:clickable="true"
+        android:inputType="time"
+        android:layout_below="@id/cyan1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="50sp"
+        android:ems="2"
+        android:padding="10dp"/>
 
+    <EditText
+        android:id="@+id/user_timer_minute_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:maxLength="2"
+        android:selectAllOnFocus="true"
+        android:textAlignment="center"
+        android:hint="@string/zerozero"
+        android:clickable="true"
+        android:inputType="time"
+        android:layout_below="@id/cyan1"
+
+        android:layout_toLeftOf="@id/user_timer_hour_input"
+        android:layout_toStartOf="@id/user_timer_hour_input"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="50sp"
+        android:ems="2"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/user_timer_second_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:maxLength="2"
+        android:selectAllOnFocus="true"
+        android:textAlignment="center"
+        android:hint="@string/zerozero"
+        android:clickable="true"
+        android:inputType="time"
+        android:layout_below="@id/cyan1"
+        android:layout_toRightOf="@id/user_timer_hour_input"
+        android:layout_toEndOf="@id/user_timer_hour_input"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="50sp"
+        android:ems="2"
+        android:padding="10dp"/>
+<!-- from testing EditViews
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,9 +119,18 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:text="@string/Pause"
-
         android:id="@+id/pause_button"/>
-
+-->
+<!-- new edit View test -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/user_timer_minute_input"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="@string/Pause"
+        android:id="@+id/pause_button"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
