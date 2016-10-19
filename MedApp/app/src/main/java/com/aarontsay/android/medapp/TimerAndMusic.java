@@ -1,6 +1,7 @@
 package com.aarontsay.android.medapp;
 
 import android.media.MediaPlayer;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,9 @@ public class TimerAndMusic extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    ActionBar aBar = getSupportActionBar();
+    aBar.hide();
+
     Button mPlay, mPause, mStop;
 
     String userTimerTextHourString;
